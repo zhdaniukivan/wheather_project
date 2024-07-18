@@ -54,7 +54,6 @@ def index(request):
 
 
 class CityNameSearchCounter(viewsets.ReadOnlyModelViewSet):
+    '''these func returned json with the city name and amount of search'''
     queryset = CityName.objects.all()
     serializer_class = CityNameSerializer
-
-
