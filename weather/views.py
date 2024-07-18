@@ -11,6 +11,7 @@ from .serializers import CityNameSerializer
 
 
 def index(request):
+    '''these func return users data about weather, and consist of the same logic'''
     user_id = request.COOKIES.get('user_id')
     if user_id:
         last_search = UsersLastSearch.objects.filter(user_id=user_id).select_related('city_name').order_by('-last_searched').first()
