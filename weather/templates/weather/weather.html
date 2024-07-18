@@ -1,0 +1,9 @@
+{% extends 'weather/base.html' %}
+
+{% block title %}Weather Forecast{% endblock %}
+
+{% block content %}
+    <h1>Прогноз погоды</h1>
+    <p>{{ weather_data }}</p>
+    <p>{{ cloud_check_result }}</p>
+{% endblock %}

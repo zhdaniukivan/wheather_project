@@ -1,0 +1,40 @@
+/* static/weather/style.css */
+body {
+    background-color: white;
+    color: black;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: yellow;
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 10px;
+}
+
+nav ul li a {
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+main {
+    margin: 20px;
+}
+
+button {
+    background-color: orange;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}

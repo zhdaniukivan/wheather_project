@@ -1,0 +1,42 @@
+{% extends 'weather/base.html' %}
+{% load static %}
+
+{% block title %}Weather{% endblock %}
+
+{% block content %}
+    <h1>{{ message }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Получить прогноз</button>
+    </form>
+    {% if weather_data %}
+
+    <h1>
+        Сегодня в городе {{ city_name }} {{ cloud_check_result }} и температура составляет {{ weather_data.fact.temp }}°C,
+            хотя ощущается как {{ weather_data.fact.feels_like }}°C. Влажность воздуха составляет {{ weather_data.fact.humidity }}%.
+            Скорость ветра: {{ weather_data.fact.wind_speed }} м/с, давление: {{ weather_data.fact.pressure_mm }} мм рт. ст.
+    </h1>
+    {% endif %}
+    <div id="suggestions" class="suggestions-container"></div>
+    <script>
+        document.getElementById('city-input').addEventListener('input', function() {
+            const query = this.value;
+            fetch(`/autocomplete/?query=${query}`)
+                .then(response => response.json())
+                .then(data => {
+                    let suggestions = document.getElementById('suggestions');
+                    suggestions.innerHTML = '';
+                    data.forEach(city => {
+                        let div = document.createElement('div');
+                        div.innerText = city;
+                        div.addEventListener('click', function() {
+                            document.getElementById('city-input').value = city;
+                            suggestions.innerHTML = '';
+                        });
+                        suggestions.appendChild(div);
+                    });
+                });
+        });
+    </script>
+{% endblock %}

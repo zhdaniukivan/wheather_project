@@ -1,0 +1,12 @@
+{% extends 'weather/base.html' %}
+
+{% block title %}Search History{% endblock %}
+
+{% block content %}
+    <h1>История поиска</h1>
+    <ul>
+        {% for item in history %}
+            <li>{{ item.city_name }} - {{ item.search_count }} раз</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
